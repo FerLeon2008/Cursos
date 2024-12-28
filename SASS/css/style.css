@@ -1,0 +1,80 @@
+@charset "UTF-8";
+.nav {
+  background-color: steelblue;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial";
+}
+
+h2 {
+  color: crimson;
+}
+
+p {
+  color: green;
+}
+
+/*Nesting
+en css para decidir que un elemento que contiene a otro tenga un template es
+
+.nav ul li a{
+    ...propiedades...
+}
+
+Pero en sass lo podemos anidar de forma sencilla
+
+
+.nav{
+    ul{
+        color: #000;
+
+        li{
+            color: #fff;
+
+            a{
+                color: blueviolet;
+            }
+        }
+    }
+}
+Esto facilita escribir código css, haciendolo más rápido y sencillo, aunque esto es una mala práctica :(
+Pero podemos usar el anidamiento
+*/
+.nav__container {
+  width: 90%;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+.nav__item {
+  color: #fff;
+  text-decoration: none;
+  /*Tambien se puede usar para el cambio de estado de un objeto:
+      &:hover{
+          color: #000;
+      }
+  */
+}
+.nav__item--activate {
+  text-decoration: underline;
+}
+@media (min-width: 764px) {
+  .nav__container {
+    justify-content: flex-end;
+  }
+}
+
+:root {
+  --primary: yellow;
+}
+
+/*# sourceMappingURL=style.css.map */

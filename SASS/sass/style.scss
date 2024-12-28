@@ -1,0 +1,90 @@
+//Se llama a un elemento parcial
+//con la regla AppRule
+@use 'navbar';
+@use 'reset'; 
+
+//Se llama a un parcial que contiene variables
+@use 'variables';
+
+//para usarlo la sintaxis es: nombre_parcial.$nombre_variable
+
+//declaración de una variable
+$color-principal: crimson;
+
+h2{
+    color: $color-principal;
+}
+
+p{
+    color: variables.$color-secundario;
+}
+
+/*Nesting
+en css para decidir que un elemento que contiene a otro tenga un template es
+
+.nav ul li a{
+    ...propiedades...
+}
+
+Pero en sass lo podemos anidar de forma sencilla
+
+
+.nav{
+    ul{
+        color: #000;
+        
+        li{
+            color: #fff;
+
+            a{
+                color: blueviolet;
+            }
+        }
+    }
+}
+Esto facilita escribir código css, haciendolo más rápido y sencillo, aunque esto es una mala práctica :(
+Pero podemos usar el anidamiento
+*/
+
+
+//Para usar variables como selectores, se tienen que interpolar: #{$nombre_variable}
+#{variables.$selector}{
+    &__container{
+        width: 90%;
+        margin: 0 auto;
+        height: 70px;
+        display:flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 1em;
+    }
+        &__item{
+            color: #fff;
+            text-decoration: none;
+        
+            &--activate{
+                text-decoration: underline;
+            }
+
+            /*Tambien se puede usar para el cambio de estado de un objeto:
+                &:hover{
+                    color: #000;
+                }
+            */    
+        }
+
+    @media (min-width:764px) {
+        &__container{
+            justify-content: flex-end;
+        }
+    }    
+}
+
+//el & sirve para referenciar al nombre del padre, en el caso anterior 'nav'
+
+
+//otro ejemplo de interpolación:
+:root{
+    --primary: #{variables.$primary};
+}
+
