@@ -1,4 +1,4 @@
-package curso_spring_boot;
+package SpringBootApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
