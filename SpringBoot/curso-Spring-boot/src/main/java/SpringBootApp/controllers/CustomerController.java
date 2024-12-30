@@ -22,6 +22,7 @@ public class CustomerController {
     @GetMapping("/userData")
     public List<Customer> getCustomers(){
         return customers;
+        
     }
 
     @GetMapping("/userData/{userName}")
