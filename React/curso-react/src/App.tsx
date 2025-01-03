@@ -1,6 +1,7 @@
 //import { useState } from 'react'
 import {AppForm, Button, ColorRed} from './components'
 //import { useFetch } from './hooks'
+import { GlobalProvider } from './context/global.provider'
 import './App.css'
 
 /*
@@ -48,14 +49,14 @@ function App() {
   }
   */
   return (
-    <>
+    <GlobalProvider>
       <ColorRed><Button parentMethod={dimeHola}>My label</Button></ColorRed>
       <Button parentMethod = {handleClick}>My button normal</Button>
 
       <AppForm>
         <button type='submit' onClick={submit}></button>
       </AppForm>
-    </>
+    </GlobalProvider>
   )
 }
 
