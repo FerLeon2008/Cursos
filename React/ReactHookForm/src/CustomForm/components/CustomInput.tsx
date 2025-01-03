@@ -1,9 +1,10 @@
 import { Control, Controller, FieldError } from "react-hook-form";
+import './CustomInput.css';
+import { FormValues } from "../models";
 
 interface Props{
-    name: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    control: Control<any>;
+    name: keyof FormValues;
+    control: Control<FormValues>;
     label: string;
     type?: string;
     error?: FieldError;
@@ -25,4 +26,4 @@ const InputForm = ({name, control, label, type, error}: Props) => {
     )
 }
 
-export default InputForm
+export default InputForm;
