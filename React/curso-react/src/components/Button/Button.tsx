@@ -21,7 +21,7 @@ export const Button = ({children,parentMethod}: Props) =>{
 
     const handlerClick = () => {
         setValue (10)
-        parentMethod
+        parentMethod()
     }
 
      return(
