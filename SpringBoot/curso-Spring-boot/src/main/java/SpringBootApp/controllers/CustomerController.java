@@ -53,7 +53,7 @@ public class CustomerController {
         return null;
     }
 
-    @DeleteMapping ("/userData/{id}")
+    @DeleteMapping("/userData/{id}")
     public Customer deleteClient(@PathVariable int id){
         for (Customer c: customers){
             if (c.getID() == id){
@@ -64,4 +64,22 @@ public class CustomerController {
         return null;
     }
 
+    @PatchMapping("/userData")
+    public Customer patchClient(@RequestBody Customer customer) {
+        for (Customer c : customers) {
+            if (c.getID() == customer.getID()) {
+                if (customer.getName() != null) {
+                    c.setName(customer.getName());
+                }
+                if (customer.getUserName() != null) {
+                    c.setUserName(customer.getUserName());
+                }
+                if (customer.getPassword() != null) {
+                    c.setPassword(customer.getPassword());
+                }
+                return c;
+            }
+        }
+        return null;
+    }
 }
