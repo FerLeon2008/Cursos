@@ -1,8 +1,10 @@
 //import { useState } from 'react'
-import {BookReader, FocusInput, PhoneBook, ShoppingCart} from './components'
+//import {BookReader, FocusInput, PhoneBook, ShoppingCart} from './components'
 //import { useFetch } from './hooks'
 //import { GlobalProvider } from './context/global.provider'
 import './App.css'
+import { useModalContext } from './components/Modal/context'
+import { Modal } from './components/Modal/Modal'
 
 /*
 //7ma clase
@@ -50,6 +52,12 @@ function App() {
     setCount((count) => count+1)
   }
   */
+
+  const {setState} = useModalContext()
+  const openModal = () => {
+    setState(true)
+  }
+
   return (
     /*
    //11va clase 
@@ -62,12 +70,22 @@ function App() {
       </AppForm>
     </GlobalProvider>
     */
+   /*
+   //12va clase
     <>
       <BookReader/>
       <FocusInput/>
       <ShoppingCart/>
       <PhoneBook/>
     </>
+    */
+   <>
+   <Modal>
+    <h2>A quién ama Erick?</h2>
+    <h1>A JAZMINE!!</h1>
+   </Modal>
+   <button onClick={openModal}>Abrete Sésamo</button>
+   </>
   )
 }
 
