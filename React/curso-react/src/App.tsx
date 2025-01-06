@@ -3,8 +3,10 @@
 //import { useFetch } from './hooks'
 //import { GlobalProvider } from './context/global.provider'
 import './App.css'
-import { useModalContext } from './components/Modal/context'
-import { Modal } from './components/Modal/Modal'
+import { EffectExample,PromiseError } from './components/ErrorBoundaryExamples'
+import UndefinedExample from './components/ErrorBoundaryExamples/UndefinedExample'
+//import { useModalContext } from './components/Modal/context'
+//import { Modal } from './components/Modal/Modal'
 
 /*
 //7ma clase
@@ -53,10 +55,13 @@ function App() {
   }
   */
 
+  /*
+  //12va clase
   const {setState} = useModalContext()
   const openModal = () => {
     setState(true)
   }
+  */
 
   return (
     /*
@@ -79,6 +84,9 @@ function App() {
       <PhoneBook/>
     </>
     */
+
+    /*
+    //13va clase
    <>
    <Modal>
     <h2>A quién ama Erick?</h2>
@@ -86,6 +94,12 @@ function App() {
    </Modal>
    <button onClick={openModal}>Abrete Sésamo</button>
    </>
+   */
+    <>
+      <PromiseError/>
+      <EffectExample/>
+      <UndefinedExample/>
+    </>
   )
 }
 
