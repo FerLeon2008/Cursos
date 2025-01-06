@@ -3,8 +3,11 @@
 //import { useFetch } from './hooks'
 //import { GlobalProvider } from './context/global.provider'
 import './App.css'
-import { EffectExample,PromiseError } from './components/ErrorBoundaryExamples'
-import UndefinedExample from './components/ErrorBoundaryExamples/UndefinedExample'
+//import { EffectExample,PromiseError } from './components/ErrorBoundaryExamples'
+//import UndefinedExample from './components/ErrorBoundaryExamples/UndefinedExample'
+import { useApi } from './hooks/useApi'
+import { Character } from './models'
+import { getCharacter } from './services/api.service'
 //import { useModalContext } from './components/Modal/context'
 //import { Modal } from './components/Modal/Modal'
 
@@ -20,6 +23,15 @@ interface Data {
 */
 
 function App() {
+  const { loading, error, data, fetch } = useApi<Character, number>(getCharacter, { autoFetch: true, params: 1 })
+
+      if (loading) {
+        return (<p>Cargando</p>)
+      }
+    
+      if (error) {
+        return (<p>Ups {error.message}</p>)
+      }
   /*
   //7ma clase
   const {data, loading, error} = useFetch<Data>(url)
@@ -95,10 +107,17 @@ function App() {
    <button onClick={openModal}>Abrete Sésamo</button>
    </>
    */
-    <>
-      <PromiseError/>
+  /*
+  //14va clase
+   <PromiseError/>
       <EffectExample/>
       <UndefinedExample/>
+  */
+
+  
+    <>
+      {JSON.stringify(data)}
+      <button onClick={() => fetch(2)}></button>
     </>
   )
 }
