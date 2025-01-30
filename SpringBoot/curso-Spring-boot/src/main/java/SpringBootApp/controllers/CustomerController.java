@@ -4,7 +4,9 @@ import SpringBootApp.domain.Customer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,9 +42,17 @@ public class CustomerController {
 
     // @RequestMapping(method = RequestMethod.POST)
     @PostMapping
-    public ResponseEntity<?> postClient(@RequestBody Customer newCustomer){
+    public ResponseEntity<Customer> postClient(@RequestBody Customer newCustomer){
         customers.add(newCustomer);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Usuario: "+newCustomer.getName()+" creado correctamente");
+
+        URI location = ServletUriComponentsBuilder
+                        .fromCurrentRequest()
+                        .path("/{userName}")
+                        .buildAndExpand(newCustomer.getUserName())
+                        .toUri();
+
+        // return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(newCustomer);
     }
 
     // @RequestMapping(method = RequestMethod.PUT)
