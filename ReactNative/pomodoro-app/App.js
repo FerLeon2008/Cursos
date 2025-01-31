@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, Platform, TouchableOpacity } from
 import { useEffect, useState } from "react";
 import Header from './components/Header';
 import Timer from './components/Timer';
-import {Audio} from "expo-av"
+import { Audio } from "expo-av"
 
 const colors = ["#F7DC6F", "#A2D9CE", "#D7BDE2"]
 
@@ -34,12 +34,13 @@ export default function App() {
   },[isActive, time])
 
   function handleStartStop() {
+    playSound()
     setIsActive(!isActive)
   }
 
   async function playSound() {
     const {sound} = await Audio.Sound.createAsync(
-      require("./assets/click.mp3")
+      require("./assets/sounds/click.mp3")
     )
     await sound.playAsync()
   }
