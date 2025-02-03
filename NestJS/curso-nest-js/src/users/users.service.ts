@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { UserProps } from './userProps/user.props';
 
 @Injectable()
 export class UsersService {
-    private users = [
+    private users: UserProps[] = [
         {
             id: 1,
             name: 'John Doe',
