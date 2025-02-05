@@ -1,6 +1,6 @@
-import { Controller, Get, HttpCode, Param, ParseBoolPipe, ParseIntPipe, Query } from '@nestjs/common';
-import { getUnpackedSettings } from 'http2';
+import { Controller, Get, HttpCode, Param, ParseBoolPipe, ParseIntPipe, Query, UseGuards } from '@nestjs/common';
 import { ValidateUserPipe } from './pipes/validate-user/validate-user.pipe';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 @Controller()
 export class HelloController {
@@ -34,11 +34,13 @@ export class HelloController {
     }
 
     @Get('active/:status')
+    @UseGuards(AuthGuard)
     isUserActive(@Param('status', ParseBoolPipe) status: boolean) {
         return status;
     }
 
     @Get('greet')
+    @UseGuards(AuthGuard)
     greet(@Query(ValidateUserPipe) query: {name: string, age: number}) {
         return `Hello ${query.name}, you are ${query.age} years old`;
     }
