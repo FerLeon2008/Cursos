@@ -1,5 +1,6 @@
 package SpringBootApp.controllers;
 
+import SpringBootApp.configurations.ExternalizedConfigurations;
 import SpringBootApp.domain.Product;
 import SpringBootApp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,14 @@ public class ProductController {
     @Lazy
     private ProductService productsService;
 
+    @Autowired
+    private ExternalizedConfigurations externalizedConfigurations;
+
     @GetMapping
     public ResponseEntity<?> getProducts() {
+
+        System.out.println(externalizedConfigurations.toString());
+
         List<Product> products = productsService.getProducts();
         return ResponseEntity.ok(products);
     }
