@@ -3,14 +3,14 @@ package SpringBootApp.service;
 import SpringBootApp.domain.Product;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Primary;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 
-@Primary
 @Service
+@ConditionalOnProperty(name = "service.products", havingValue = "jsonResourceService")
 public class ProductsServiceJSONImpl implements ProductService {
 
     @Override

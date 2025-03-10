@@ -1,6 +1,7 @@
 package SpringBootApp.service;
 
 import SpringBootApp.domain.Product;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
+@ConditionalOnProperty(name = "service.products", havingValue = "listResourceService")
 public class ProductsServiceImpl implements ProductService
 {
 

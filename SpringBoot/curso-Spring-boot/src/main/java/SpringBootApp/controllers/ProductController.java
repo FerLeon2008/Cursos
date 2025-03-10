@@ -2,7 +2,6 @@ package SpringBootApp.controllers;
 
 import SpringBootApp.domain.Product;
 import SpringBootApp.service.ProductService;
-import SpringBootApp.service.ProductsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,7 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    // Instancia de clase
+    // Inyección de dependencias
     @Autowired
     private ProductService productsService;
 
